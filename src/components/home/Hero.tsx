@@ -10,13 +10,13 @@ const Hero = () => {
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="w-full md:w-1/2 space-y-6">
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-              <span className="block">Copy the Top Traders.</span>
+              <span className="block">Copy the Top Traders and Hedge Funds.</span>
               <span className="bg-gradient-to-r from-aptos-primary to-aptos-accent bg-clip-text text-transparent">
                 Auto-Trade via Aptos.
               </span>
             </h1>
             <p className="text-lg text-muted-foreground max-w-md">
-              Effortlessly follow top-performing traders on the Aptos blockchain
+              Effortlessly follow top-performing traders and hedge funds on the Aptos blockchain
               and automatically mirror their winning strategies.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
@@ -25,7 +25,7 @@ const Hero = () => {
                   Get Started <ArrowRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
-              <Link to="/traders">
+              <Link to="/dashboard">
                 <Button variant="outline" size="lg">
                   Browse Top Traders
                 </Button>
