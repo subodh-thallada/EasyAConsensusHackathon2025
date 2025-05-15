@@ -43,10 +43,10 @@ const Navbar = () => {
           {/* Logo */}
           <Link to="/" className="flex items-center space-x-2 group">
             <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-aptos-primary to-aptos-accent flex items-center justify-center transform transition-transform group-hover:scale-105">
-              <span className="text-white font-bold text-lg">A</span>
+              <span className="text-white font-bold text-lg">IP</span>
             </div>
             <span className="text-xl font-bold bg-gradient-to-r from-aptos-primary to-aptos-accent bg-clip-text text-transparent">
-              AptosTradeFlow
+              InvestPro
             </span>
           </Link>
 

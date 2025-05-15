@@ -129,7 +129,7 @@ const Footer = () => {
           
           <div className="mt-8 md:mt-0 md:order-1">
             <p className="text-center text-xs text-muted-foreground">
-              © 2025 AptosTradeFlow. All rights reserved.
+              © 2025 InvestPro. All rights reserved.
             </p>
           </div>
         </div>

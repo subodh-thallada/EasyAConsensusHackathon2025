@@ -14,7 +14,7 @@ const faqItems = [
       "Each trader or hedge fund on the platform issues their own token that represents their strategy. When you invest, you're buying into that strategy via their personal coin. As their performance grows, so does the value of your investment.",
   },
   {
-    question: "What are the fees for using AptosTradeFlow?",
+    question: "What are the fees for using InvestPro?",
     answer:
       "We charge a small platform fee on successful returns. Traders and funds may also set performance fees tied to their coin's value growth — all transparently displayed before you invest.",
   },
@@ -51,7 +51,7 @@ const FAQ = () => {
             Frequently Asked Questions
           </h2>
           <p className="mt-2 text-base text-gray-300">
-            Everything you need to know about AptosTradeFlow
+            Everything you need to know about InvestPro
           </p>
         </div>
 

@@ -9,7 +9,7 @@ const About = () => {
     <Layout>
       <div className="max-w-4xl mx-auto px-4 py-16">
         <div className="text-center mb-16">
-          <h1 className="text-4xl font-bold mb-6">About AptosTradeFlow</h1>
+          <h1 className="text-4xl font-bold mb-6">About InvestPro</h1>
           <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Simplifying crypto trading by letting you automatically follow top-performing
             traders on the Aptos blockchain.
@@ -20,7 +20,7 @@ const About = () => {
           <section>
             <h2 className="text-2xl font-bold mb-4">Our Mission</h2>
             <p className="text-muted-foreground mb-4">
-              At AptosTradeFlow, we're on a mission to democratize crypto trading by making
+              At InvestPro, we're on a mission to democratize crypto trading by making
               professional-level strategies accessible to everyone. We believe that by enabling
               everyday users to follow successful traders, we can help more people participate
               in the benefits of the crypto economy.
