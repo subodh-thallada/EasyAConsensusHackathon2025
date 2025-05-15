@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { ArrowUp, ArrowDown, TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import confetti from "canvas-confetti";
 
 export interface Strategy {
   id: string;
@@ -88,9 +89,19 @@ const StrategyCard = ({ strategy }: StrategyCardProps) => {
         </Button>
         <Button 
           className="w-1/2 bg-aptos-primary hover:bg-aptos-primary/80 text-aptos-dark font-medium"
+          onClick={() => {
+            confetti({
+              particleCount: 150,
+              spread: 90,
+              origin: { y: 0.6 },
+              zIndex: 9999
+            });
+            // You can also trigger a toast or actual buy logic here
+          }}
         >
           Buy Now
         </Button>
+
       </CardFooter>
     </Card>
   );
