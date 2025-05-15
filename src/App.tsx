@@ -1,10 +1,11 @@
-
 import React from 'react';
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { AptosWalletAdapterProvider } from "@aptos-labs/wallet-adapter-react";
+import { Network } from "@aptos-labs/ts-sdk";
 
 // Pages
 import Index from "./pages/Index";
@@ -21,7 +22,13 @@ const queryClient = new QueryClient();
 
 const App = () => {
   return (
-    <React.StrictMode>
+    <AptosWalletAdapterProvider
+      autoConnect={true}
+      dappConfig={{ network: Network.TESTNET }}
+      onError={(error) => {
+        console.log("error", error);
+      }}
+    >
       <QueryClientProvider client={queryClient}>
         <TooltipProvider>
           <Toaster />
@@ -41,7 +48,7 @@ const App = () => {
           </BrowserRouter>
         </TooltipProvider>
       </QueryClientProvider>
-    </React.StrictMode>
+    </AptosWalletAdapterProvider>
   );
 };
 
