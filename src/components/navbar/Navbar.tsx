@@ -26,7 +26,6 @@ const Navbar = () => {
   const navLinks = [
     { to: "/", label: "Home", icon: Home },
     { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
-    { to: "/traders", label: "Copy Traders", icon: Users },
     { to: "/about", label: "About", icon: Info },
   ];
 
