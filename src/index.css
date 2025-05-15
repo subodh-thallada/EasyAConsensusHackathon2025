@@ -7,65 +7,43 @@
 
 @layer base {
   :root {
-    --background: 260 33% 98%;
-    --foreground: 222 47% 11%;
+    --background: 215 23% 7%;
+    --foreground: 210 17% 82%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 47.4% 11.2%;
+    --card: 215 18% 11%;
+    --card-foreground: 210 17% 82%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 222 47% 11%;
+    --popover: 215 18% 11%;
+    --popover-foreground: 210 17% 82%;
 
     --primary: 255 62% 75%;
-    --primary-foreground: 210 40% 98%;
+    --primary-foreground: 215 23% 7%;
 
     --secondary: 260 38% 54%;
-    --secondary-foreground: 210 40% 98%;
+    --secondary-foreground: 210 17% 82%;
 
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215 16% 47%;
+    --muted: 215 12% 45%;
+    --muted-foreground: 215 12% 57%;
 
-    --accent: 142 70% 56%;
-    --accent-foreground: 222 47% 11%;
+    --accent: 142 70% 50%;
+    --accent-foreground: 215 23% 7%;
 
     --destructive: 0 84% 60%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive-foreground: 210 17% 82%;
 
-    --border: 214 32% 91%;
-    --input: 214 32% 91%;
-    --ring: 255 62% 75%;
+    --border: 215 16% 21%;
+    --input: 215 16% 21%;
+    --ring: 155 70% 50%;
 
     --radius: 0.75rem;
-  }
 
-  .dark {
-    --background: 222 47% 11%;
-    --foreground: 210 40% 98%;
-
-    --card: 222 47% 11%;
-    --card-foreground: 210 40% 98%;
-
-    --popover: 222 47% 11%;
-    --popover-foreground: 210 40% 98%;
-
-    --primary: 255 62% 75%;
-    --primary-foreground: 222 47% 11%;
-
-    --secondary: 260 38% 54%;
-    --secondary-foreground: 210 40% 98%;
-
-    --muted: 217 33% 18%;
-    --muted-foreground: 215 20% 65%;
-
-    --accent: 142 70% 56%;
-    --accent-foreground: 222 47% 11%;
-
-    --destructive: 0 63% 31%;
-    --destructive-foreground: 210 40% 98%;
-
-    --border: 217 33% 18%;
-    --input: 217 33% 18%;
-    --ring: 255 62% 75%;
+    /* New Aptos theme colors */
+    --aptos-primary: 142 70% 50%; /* #00FFAA */
+    --aptos-secondary: 217 91% 60%; /* #3B82F6 */
+    --aptos-accent: 142 70% 50%;
+    --aptos-dark: 215 23% 7%; /* #0D1117 */
+    --aptos-light: 215 18% 95%;
+    --aptos-gray: 215 12% 57%;
   }
 }
 
@@ -75,14 +53,14 @@
   }
 
   body {
-    @apply bg-background text-foreground font-sans;
+    @apply bg-[#0D1117] text-foreground font-sans;
     font-feature-settings: "rlig" 1, "calt" 1;
   }
 }
 
 @layer components {
   .gradient-card {
-    @apply bg-gradient-to-br from-white to-aptos-light dark:from-aptos-dark/50 dark:to-aptos-dark rounded-xl shadow-md backdrop-blur-sm;
+    @apply bg-gradient-to-br from-[#161B22] to-[#0D1117] rounded-xl shadow-md backdrop-blur-sm;
   }
 
   .hero-gradient {
@@ -97,3 +75,4 @@
     @apply py-16 px-4 sm:px-6 md:py-24 md:px-8;
   }
 }
+

@@ -11,6 +11,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
+import StrategyDetail from "./pages/StrategyDetail";
 import AssetManagerDashboard from "./pages/AssetManagerDashboard";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
@@ -29,6 +30,7 @@ const App = () => (
           <Route path="/signup" element={<Signup />} />
           <Route path="/onboarding" element={<Onboarding />} />
           <Route path="/dashboard" element={<Dashboard />} />
+          <Route path="/strategy/:id" element={<StrategyDetail />} />
           <Route path="/asset-manager" element={<AssetManagerDashboard />} />
           <Route path="/about" element={<About />} />
           <Route path="*" element={<NotFound />} />
