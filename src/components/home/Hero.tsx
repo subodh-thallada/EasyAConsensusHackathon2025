@@ -9,25 +9,25 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="w-full md:w-1/2 space-y-6">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-              <span className="block">Copy the Top Traders and Hedge Funds.</span>
-              <span className="bg-gradient-to-r from-aptos-primary to-aptos-accent bg-clip-text text-transparent">
-                Auto-Trade via Aptos.
-              </span>
-            </h1>
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+            <span className="block">Invest in Top Traders and Hedge Funds.</span>
+            <span className="bg-gradient-to-r from-aptos-primary to-aptos-accent bg-clip-text text-transparent">
+            Own Their Strategy. Earn With Their Success.
+            </span>
+          </h1>
             <p className="text-lg text-muted-foreground max-w-md">
-              Effortlessly follow top-performing traders and hedge funds on the Aptos blockchain
-              and automatically mirror their winning strategies.
+            Buy into tokenized strategies managed by expert traders and hedge funds. When they win, you win. 
+            No copying, just pure performance-based investing on the Aptos blockchain.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link to="/signup">
-                <Button size="lg" className="bg-aptos-primary hover:bg-aptos-secondary">
-                  Get Started <ArrowRight className="ml-2 h-4 w-4" />
-                </Button>
+              <Button size="lg" className="bg-aptos-primary hover:bg-aptos-secondary">
+                Start Investing <ArrowRight className="ml-2 h-4 w-4" />
+              </Button>
               </Link>
               <Link to="/dashboard">
                 <Button variant="outline" size="lg">
-                  Browse Top Traders
+                Explore Investment Strategies
                 </Button>
               </Link>
             </div>
