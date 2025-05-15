@@ -32,7 +32,8 @@ const Hero = () => {
               </Link>
             </div>
 
-            <div className="pt-8 flex items-center space-x-4 text-sm text-muted-foreground">
+{/*  THE JOIN 5000+ USERS PART LOL*/}
+            {/* <div className="pt-8 flex items-center space-x-4 text-sm text-muted-foreground">
               <div className="flex -space-x-2">
                 {[1, 2, 3, 4].map((i) => (
                   <div
@@ -43,8 +44,7 @@ const Hero = () => {
                   </div>
                 ))}
               </div>
-              <p>Join <span className="font-semibold text-foreground">5,000+</span> traders</p>
-            </div>
+            </div> */}
           </div>
 
           <div className="w-full md:w-1/2 relative">
