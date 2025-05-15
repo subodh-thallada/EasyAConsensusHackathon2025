@@ -7,27 +7,32 @@ interface FAQItem {
   answer: string;
 }
 
-const faqItems: FAQItem[] = [
+const faqItems = [
   {
-    question: "What is AptosTradeFlow?",
-    answer: "AptosTradeFlow is a decentralized copy trading platform built on the Aptos blockchain. It allows users to automatically replicate the trading strategies of successful traders while maintaining full control of their assets."
+    question: "How does investing in personal coins work?",
+    answer:
+      "Each trader or hedge fund on the platform issues their own token that represents their strategy. When you invest, you're buying into that strategy via their personal coin. As their performance grows, so does the value of your investment.",
   },
   {
-    question: "How does copy trading work?",
-    answer: "Copy trading allows you to automatically mirror the trades of experienced traders. When a trader you're following makes a trade, the same trade is executed in your portfolio with your allocated funds, adjusted for your risk preferences."
+    question: "What are the fees for using AptosTradeFlow?",
+    answer:
+      "We charge a small platform fee on successful returns. Traders and funds may also set performance fees tied to their coin's value growth — all transparently displayed before you invest.",
   },
   {
-    question: "Is my investment safe?",
-    answer: "Yes, your investments are secured by the Aptos blockchain. You maintain full control of your assets, and all transactions are transparent and immutable. Our smart contracts are audited and follow best security practices."
+    question: "How do I choose who to invest in?",
+    answer:
+      "Each trader and fund has a public profile showcasing historical returns, strategy style, risk score, and token performance. You can browse, filter by volatility and return goals, and choose based on what aligns with your preferences.",
   },
   {
-    question: "What are the fees?",
-    answer: "We charge a small performance fee on profitable trades, which is used to incentivize top traders and maintain the platform. There are no hidden fees or subscription costs."
+    question: "Can I launch my own strategy coin?",
+    answer:
+      "Yes! If you're a skilled trader or fund manager, you can tokenize your strategy and offer it to the community. You'll need to verify your wallet and trading history to get started.",
   },
   {
-    question: "How do I get started?",
-    answer: "Getting started is easy! Connect your Aptos wallet, fund your account, and choose from our curated list of successful traders to copy. You can start with any amount and adjust your risk settings at any time."
-  }
+    question: "Is my investment secure?",
+    answer:
+      "Yes. All funds are held in non-custodial smart contracts on the Aptos blockchain. Your tokens remain in your wallet, and no manager can access your principal directly. The contracts are audited for transparency and safety.",
+  },
 ];
 
 const FAQ = () => {
