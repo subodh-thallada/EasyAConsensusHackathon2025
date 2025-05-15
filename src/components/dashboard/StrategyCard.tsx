@@ -1,9 +1,9 @@
-
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card, CardContent, CardFooter, CardHeader, CardTitle, CardDescription } from "@/components/ui/card";
 import { ArrowUp, ArrowDown, TrendingUp } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import InvestmentMenu from "./InvestmentMenu";
 
 export interface Strategy {
   id: string;
@@ -16,21 +16,22 @@ export interface Strategy {
 
 interface StrategyCardProps {
   strategy: Strategy;
+  onInvestmentComplete?: () => void;
 }
 
-const StrategyCard = ({ strategy }: StrategyCardProps) => {
+const StrategyCard = ({ strategy, onInvestmentComplete }: StrategyCardProps) => {
   const navigate = useNavigate();
   
   const getRiskColor = (risk: string) => {
     switch (risk) {
       case "Low":
-        return "bg-emerald-900/20 text-emerald-400 border-emerald-400/20";
+        return "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-300";
       case "Medium":
-        return "bg-amber-900/20 text-amber-400 border-amber-400/20";
+        return "bg-yellow-100 text-yellow-800 dark:bg-yellow-900 dark:text-yellow-300";
       case "High":
-        return "bg-rose-900/20 text-rose-400 border-rose-400/20";
+        return "bg-red-100 text-red-800 dark:bg-red-900 dark:text-red-300";
       default:
-        return "bg-slate-900/20 text-slate-400 border-slate-400/20";
+        return "bg-gray-100 text-gray-800 dark:bg-gray-900 dark:text-gray-300";
     }
   };
 
@@ -42,7 +43,7 @@ const StrategyCard = ({ strategy }: StrategyCardProps) => {
         </CardTitle>
         <Badge 
           variant="outline" 
-          className={`${getRiskColor(strategy.riskLevel)} text-xs px-2 py-0.5`}
+          className={getRiskColor(strategy.riskLevel)}
         >
           {strategy.riskLevel} Risk
         </Badge>
@@ -86,11 +87,12 @@ const StrategyCard = ({ strategy }: StrategyCardProps) => {
         >
           View Details
         </Button>
-        <Button 
-          className="w-1/2 bg-aptos-primary hover:bg-aptos-primary/80 text-aptos-dark font-medium"
-        >
-          Buy Now
-        </Button>
+        <div className="w-1/2">
+          <InvestmentMenu 
+            strategy={strategy}
+            onInvestmentComplete={onInvestmentComplete}
+          />
+        </div>
       </CardFooter>
     </Card>
   );
