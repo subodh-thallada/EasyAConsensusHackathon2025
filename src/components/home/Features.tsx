@@ -1,60 +1,113 @@
+import { 
+  Shield, 
+  Copy, 
+  LineChart, 
+  Zap, 
+  Lock, 
+  Users 
+} from "lucide-react";
 
-import { Shield, TrendingUp, BarChart, Wallet } from 'lucide-react';
+interface Feature {
+  icon: React.ReactNode;
+  title: string;
+  description: string;
+}
 
-const features = [
+const features: Feature[] = [
   {
-    title: 'Effortless Onboarding',
-    description: 'Connect your wallet and start investing in top crypto strategists in just a few clicks.',
-    icon: Wallet,
-    color: 'bg-blue-500/10 text-blue-500',
+    icon: <Shield className="w-6 h-6" />,
+    title: "Secure Trading",
+    description: "Built on Aptos blockchain with advanced security measures and smart contract audits."
   },
   {
-    title: 'Invest by Risk & Return',
-    description: 'Choose from curated strategy tokens — high growth, stable yield, or balanced portfolios.',
-    icon: TrendingUp,
-    color: 'bg-aptos-accent/10 text-aptos-accent',
+    icon: <Copy className="w-6 h-6" />,
+    title: "Copy Trading",
+    description: "Automatically replicate successful traders' strategies with customizable risk settings."
   },
   {
-    title: 'Transparent Performance Data',
-    description: 'Access detailed analytics, performance history, and risk scores before you invest.',
-    icon: BarChart,
-    color: 'bg-purple-500/10 text-purple-500',
+    icon: <LineChart className="w-6 h-6" />,
+    title: "Real-time Analytics",
+    description: "Track your portfolio performance with detailed analytics and market insights."
   },
   {
-    title: 'Secured on Aptos',
-    description: 'Non-custodial and secure smart contracts built on the scalable Aptos blockchain.',
-    icon: Shield,
-    color: 'bg-aptos-primary/10 text-aptos-primary',
+    icon: <Zap className="w-6 h-6" />,
+    title: "Fast Execution",
+    description: "Lightning-fast trade execution powered by Aptos's high-performance blockchain."
   },
+  {
+    icon: <Lock className="w-6 h-6" />,
+    title: "Asset Security",
+    description: "Your assets remain in your control with our non-custodial trading system."
+  },
+  {
+    icon: <Users className="w-6 h-6" />,
+    title: "Community Driven",
+    description: "Join a thriving community of traders and share strategies and insights."
+  }
 ];
 
 const Features = () => {
   return (
-    <section className="section-padding bg-white dark:bg-aptos-dark">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-12 md:mb-20">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Invest in Crypto Talent Like Never Before
+    <section className="pt-4 pb-12 px-4 sm:px-6 lg:px-8 bg-aptos-dark">
+      <div className="max-w-6xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-12">
+          <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-aptos-primary to-aptos-accent bg-clip-text text-transparent">
+            Powerful Features
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our platform lets you invest directly in traders and hedge funds through tokenized strategies.
-            If they succeed, so do you.
+          <p className="mt-2 text-base text-gray-300 max-w-2xl mx-auto">
+            Experience the future of trading with our comprehensive suite of features
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        {/* Features Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {features.map((feature, index) => (
-            <div 
-              key={index} 
-              className="gradient-card p-6 flex flex-col items-start transition-all duration-200 hover:shadow-lg"
+            <div
+              key={index}
+              className="group relative"
             >
-              <div className={`p-3 rounded-lg mb-4 ${feature.color}`}>
-                <feature.icon className="h-6 w-6" />
+              {/* Feature Card */}
+              <div className="h-full p-6 rounded-xl bg-aptos-dark/50 border border-gray-800 backdrop-blur-sm transition-all duration-300 hover:border-aptos-primary/50">
+                {/* Icon Container */}
+                <div className="mb-4 inline-flex p-3 rounded-lg bg-aptos-primary/10 text-aptos-primary group-hover:bg-aptos-primary/20 transition-colors">
+                  {feature.icon}
+                </div>
+
+                {/* Content */}
+                <h3 className="text-lg font-semibold text-white mb-2">
+                  {feature.title}
+                </h3>
+                <p className="text-sm text-gray-300">
+                  {feature.description}
+                </p>
+
+                {/* Decorative Elements */}
+                <div className="absolute -top-2 -right-2 w-24 h-24 bg-aptos-primary/10 rounded-full blur-2xl group-hover:bg-aptos-primary/20 transition-all duration-300" />
+                <div className="absolute -bottom-2 -left-2 w-24 h-24 bg-aptos-accent/10 rounded-full blur-2xl group-hover:bg-aptos-accent/20 transition-all duration-300" />
               </div>
-              <h3 className="text-lg font-medium mb-2">{feature.title}</h3>
-              <p className="text-muted-foreground text-sm">{feature.description}</p>
             </div>
           ))}
+        </div>
+
+        {/* CTA Section */}
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-aptos-primary/10 text-aptos-primary hover:bg-aptos-primary/20 transition-colors cursor-pointer">
+            <span className="text-sm font-medium">Explore All Features</span>
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M9 5l7 7-7 7"
+              />
+            </svg>
+          </div>
         </div>
       </div>
     </section>

@@ -1,62 +1,104 @@
+import { useState } from "react";
+import { ChevronDown } from "lucide-react";
+import { cn } from "@/lib/utils";
 
-import {
-  Accordion,
-  AccordionContent,
-  AccordionItem,
-  AccordionTrigger,
-} from "@/components/ui/accordion";
+interface FAQItem {
+  question: string;
+  answer: string;
+}
 
-const faqItems = [
+const faqItems: FAQItem[] = [
   {
-    question: "How does investing in personal coins work?",
-    answer:
-      "Each trader or hedge fund on the platform issues their own token that represents their strategy. When you invest, you're buying into that strategy via their personal coin. As their performance grows, so does the value of your investment.",
+    question: "What is AptosTradeFlow?",
+    answer: "AptosTradeFlow is a decentralized copy trading platform built on the Aptos blockchain. It allows users to automatically replicate the trading strategies of successful traders while maintaining full control of their assets."
   },
   {
-    question: "What are the fees for using AptosTradeFlow?",
-    answer:
-      "We charge a small platform fee on successful returns. Traders and funds may also set performance fees tied to their coin's value growth — all transparently displayed before you invest.",
+    question: "How does copy trading work?",
+    answer: "Copy trading allows you to automatically mirror the trades of experienced traders. When a trader you're following makes a trade, the same trade is executed in your portfolio with your allocated funds, adjusted for your risk preferences."
   },
   {
-    question: "How do I choose who to invest in?",
-    answer:
-      "Each trader and fund has a public profile showcasing historical returns, strategy style, risk score, and token performance. You can browse, filter by volatility and return goals, and choose based on what aligns with your preferences.",
+    question: "Is my investment safe?",
+    answer: "Yes, your investments are secured by the Aptos blockchain. You maintain full control of your assets, and all transactions are transparent and immutable. Our smart contracts are audited and follow best security practices."
   },
   {
-    question: "Can I launch my own strategy coin?",
-    answer:
-      "Yes! If you're a skilled trader or fund manager, you can tokenize your strategy and offer it to the community. You'll need to verify your wallet and trading history to get started.",
+    question: "What are the fees?",
+    answer: "We charge a small performance fee on profitable trades, which is used to incentivize top traders and maintain the platform. There are no hidden fees or subscription costs."
   },
   {
-    question: "Is my investment secure?",
-    answer:
-      "Yes. All funds are held in non-custodial smart contracts on the Aptos blockchain. Your tokens remain in your wallet, and no manager can access your principal directly. The contracts are audited for transparency and safety.",
-  },
+    question: "How do I get started?",
+    answer: "Getting started is easy! Connect your Aptos wallet, fund your account, and choose from our curated list of successful traders to copy. You can start with any amount and adjust your risk settings at any time."
+  }
 ];
 
 const FAQ = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
+
+  const toggleFAQ = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
+  };
+
   return (
-    <section className="section-padding bg-white dark:bg-aptos-dark">
-      <div className="max-w-4xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Frequently asked questions
+    <section className="py-12 px-4 sm:px-6 lg:px-8 bg-aptos-dark">
+      <div className="max-w-3xl mx-auto">
+        {/* Section Header */}
+        <div className="text-center mb-8">
+          <h2 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-aptos-primary to-aptos-accent bg-clip-text text-transparent">
+            Frequently Asked Questions
           </h2>
-          <p className="text-lg text-muted-foreground">
-            Learn how to invest in top crypto talent through tokenized strategies on AptosTradeFlow.
+          <p className="mt-2 text-base text-gray-300">
+            Everything you need to know about AptosTradeFlow
           </p>
         </div>
 
-        <Accordion type="single" collapsible className="w-full">
+        {/* FAQ Items */}
+        <div className="space-y-3">
           {faqItems.map((item, index) => (
-            <AccordionItem key={index} value={`item-${index}`}>
-              <AccordionTrigger className="text-left">
-                {item.question}
-              </AccordionTrigger>
-              <AccordionContent>{item.answer}</AccordionContent>
-            </AccordionItem>
+            <div
+              key={index}
+              className="border border-gray-800 rounded-lg overflow-hidden bg-aptos-dark/50 backdrop-blur-sm"
+            >
+              <button
+                className="w-full px-4 py-3 text-left flex items-center justify-between hover:bg-aptos-dark/80 transition-colors"
+                onClick={() => toggleFAQ(index)}
+              >
+                <span className="text-base font-medium text-white">
+                  {item.question}
+                </span>
+                <ChevronDown
+                  className={cn(
+                    "h-4 w-4 text-gray-400 transition-transform duration-200",
+                    openIndex === index && "transform rotate-180"
+                  )}
+                />
+              </button>
+              <div
+                className={cn(
+                  "px-4 transition-all duration-200 ease-in-out",
+                  openIndex === index
+                    ? "max-h-96 opacity-100 py-3"
+                    : "max-h-0 opacity-0"
+                )}
+              >
+                <p className="text-sm text-gray-300 leading-relaxed">
+                  {item.answer}
+                </p>
+              </div>
+            </div>
           ))}
-        </Accordion>
+        </div>
+
+        {/* Additional Help */}
+        <div className="mt-8 text-center">
+          <p className="text-sm text-gray-400">
+            Still have questions?{" "}
+            <a
+              href="mailto:support@aptostradeflow.com"
+              className="text-aptos-primary hover:text-aptos-accent transition-colors"
+            >
+              Contact our support team
+            </a>
+          </p>
+        </div>
       </div>
     </section>
   );

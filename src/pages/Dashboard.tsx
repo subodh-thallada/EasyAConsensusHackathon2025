@@ -1,8 +1,9 @@
-
 import Layout from '../components/layout/Layout';
 import UserStats from '../components/dashboard/UserStats';
 import PortfolioValue from '../components/dashboard/PortfolioValue';
 import StrategyCard, { Strategy } from '../components/dashboard/StrategyCard';
+import WalletProtection from '../components/WalletProtection';
+import WalletStats from '../components/dashboard/WalletStats';
 
 const Dashboard = () => {
   // Sample investment strategies data
@@ -34,24 +35,27 @@ const Dashboard = () => {
   ];
 
   return (
-    <Layout>
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="mb-6">
-          <h1 className="text-2xl font-bold text-white">Investment Dashboard</h1>
-          <p className="text-muted-foreground">
-            Choose from our curated investment strategies
-          </p>
-        </div>
+    <WalletProtection>
+      <Layout>
+        <div className="max-w-7xl mx-auto px-4 py-8">
+          <div className="mb-6">
+            <h1 className="text-2xl font-bold text-white">Investment Dashboard</h1>
+            <p className="text-muted-foreground">
+              Choose from our curated investment strategies
+            </p>
+          </div>
 
-        <UserStats />
+          <WalletStats />
+          <UserStats />
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
-          {strategies.map((strategy) => (
-            <StrategyCard key={strategy.id} strategy={strategy} />
-          ))}
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mt-8">
+            {strategies.map((strategy) => (
+              <StrategyCard key={strategy.id} strategy={strategy} />
+            ))}
+          </div>
         </div>
-      </div>
-    </Layout>
+      </Layout>
+    </WalletProtection>
   );
 };
 

@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "commonjs",
   "scripts": {
-    "server:nodemon": "npx nodemon --watch src --exec \"npx tsx src/server/index.ts\"",
+    "server:nodemon": "npx nodemon --watch src --exec \"npx ts-node src/server/index.ts\"",
     "dev": "vite",
     "build": "vite build",
     "build:dev": "vite build --mode development",
@@ -85,7 +85,6 @@
     "tailwindcss": "^3.4.11",
     "ts-node": "^10.9.2",
     "ts-node-dev": "^2.0.0",
-    "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.0.1",
     "vite": "^5.4.1"

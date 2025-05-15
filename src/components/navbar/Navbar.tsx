@@ -1,100 +1,131 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { Button } from "@/components/ui/button";
-import { Menu, X, ChevronDown } from "lucide-react";
+import { Menu, X, ChevronDown, Home, LayoutDashboard, Users, Info } from "lucide-react";
 import WalletConnect from "../WalletConnect";
+import { cn } from "@/lib/utils";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const location = useLocation();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  const navLinks = [
+    { to: "/", label: "Home", icon: Home },
+    { to: "/dashboard", label: "Dashboard", icon: LayoutDashboard },
+    { to: "/traders", label: "Copy Traders", icon: Users },
+    { to: "/about", label: "About", icon: Info },
+  ];
+
   return (
-    <nav className="fixed top-0 w-full bg-white/80 dark:bg-aptos-dark/80 backdrop-blur-md z-50 py-4 px-6 shadow-sm">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <Link to="/" className="flex items-center space-x-2">
-          <div className="h-8 w-8 rounded-full bg-gradient-to-br from-aptos-primary to-aptos-accent flex items-center justify-center">
-            <span className="text-white font-bold">A</span>
-          </div>
-          <span className="text-xl font-bold bg-gradient-to-r from-aptos-primary to-aptos-accent bg-clip-text text-transparent">
-            AptosTradeFlow
-          </span>
-        </Link>
-
-        {/* Desktop Menu */}
-        <div className="hidden md:flex items-center space-x-6">
-          <Link to="/" className="text-sm font-medium hover:text-aptos-primary transition-colors">
-            Home
-          </Link>
-          <Link to="/dashboard" className="text-sm font-medium hover:text-aptos-primary transition-colors">
-            Dashboard
-          </Link>
-          <div className="relative group">
-            <button className="flex items-center text-sm font-medium hover:text-aptos-primary transition-colors">
-              Copy Traders <ChevronDown className="ml-1 h-4 w-4" />
-            </button>
-            <div className="absolute left-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white dark:bg-aptos-dark ring-1 ring-black ring-opacity-5 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-              <Link to="/traders" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800">
-                Browse Traders
-              </Link>
-              <Link to="/leaderboard" className="block px-4 py-2 text-sm hover:bg-gray-100 dark:hover:bg-gray-800">
-                Leaderboard
-              </Link>
+    <nav
+      className={cn(
+        "fixed top-0 w-full z-50 transition-all duration-300",
+        isScrolled
+          ? "bg-white/90 dark:bg-aptos-dark/90 backdrop-blur-md shadow-md py-3"
+          : "bg-transparent py-4"
+      )}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex items-center justify-between">
+          {/* Logo */}
+          <Link to="/" className="flex items-center space-x-2 group">
+            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-aptos-primary to-aptos-accent flex items-center justify-center transform transition-transform group-hover:scale-105">
+              <span className="text-white font-bold text-lg">A</span>
             </div>
-          </div>
-          <Link to="/about" className="text-sm font-medium hover:text-aptos-primary transition-colors">
-            About
+            <span className="text-xl font-bold bg-gradient-to-r from-aptos-primary to-aptos-accent bg-clip-text text-transparent">
+              AptosTradeFlow
+            </span>
           </Link>
-        </div>
 
-        <div className="hidden md:flex items-center space-x-4">
-          <WalletConnect />
-        </div>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center space-x-8">
+            {navLinks.map((link) => {
+              const Icon = link.icon;
+              return (
+                <Link
+                  key={link.to}
+                  to={link.to}
+                  className={cn(
+                    "flex items-center space-x-1 text-sm font-medium transition-colors hover:text-aptos-primary",
+                    location.pathname === link.to
+                      ? "text-aptos-primary"
+                      : "text-gray-600 dark:text-gray-300"
+                  )}
+                >
+                  <Icon className="h-4 w-4" />
+                  <span>{link.label}</span>
+                </Link>
+              );
+            })}
+          </div>
 
-        {/* Mobile Menu Button */}
-        <button className="md:hidden" onClick={toggleMenu}>
-          {isMenuOpen ? <X /> : <Menu />}
-        </button>
+          {/* Wallet Connect */}
+          <div className="hidden md:block">
+            <WalletConnect />
+          </div>
+
+          {/* Mobile Menu Button */}
+          <button
+            className="md:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+            onClick={toggleMenu}
+          >
+            {isMenuOpen ? (
+              <X className="h-6 w-6" />
+            ) : (
+              <Menu className="h-6 w-6" />
+            )}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
-      {isMenuOpen && (
-        <div className="md:hidden px-6 py-4 space-y-4 bg-white dark:bg-aptos-dark border-t">
-          <Link 
-            to="/" 
-            className="block text-sm font-medium hover:text-aptos-primary"
-            onClick={toggleMenu}
-          >
-            Home
-          </Link>
-          <Link 
-            to="/dashboard" 
-            className="block text-sm font-medium hover:text-aptos-primary"
-            onClick={toggleMenu}
-          >
-            Dashboard
-          </Link>
-          <Link 
-            to="/traders" 
-            className="block text-sm font-medium hover:text-aptos-primary"
-            onClick={toggleMenu}
-          >
-            Copy Traders
-          </Link>
-          <Link 
-            to="/about" 
-            className="block text-sm font-medium hover:text-aptos-primary"
-            onClick={toggleMenu}
-          >
-            About
-          </Link>
-          <div className="pt-4 border-t border-gray-200 dark:border-gray-700">
+      <div
+        className={cn(
+          "md:hidden transition-all duration-300 ease-in-out",
+          isMenuOpen
+            ? "max-h-screen opacity-100"
+            : "max-h-0 opacity-0 overflow-hidden"
+        )}
+      >
+        <div className="px-4 py-4 space-y-3 bg-white dark:bg-aptos-dark border-t border-gray-200 dark:border-gray-800">
+          {navLinks.map((link) => {
+            const Icon = link.icon;
+            return (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={cn(
+                  "flex items-center space-x-2 px-3 py-2 rounded-lg text-sm font-medium transition-colors",
+                  location.pathname === link.to
+                    ? "bg-aptos-primary/10 text-aptos-primary"
+                    : "hover:bg-gray-100 dark:hover:bg-gray-800"
+                )}
+                onClick={toggleMenu}
+              >
+                <Icon className="h-4 w-4" />
+                <span>{link.label}</span>
+              </Link>
+            );
+          })}
+          <div className="pt-4 border-t border-gray-200 dark:border-gray-800">
             <WalletConnect />
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 };
