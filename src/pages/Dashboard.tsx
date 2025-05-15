@@ -1,10 +1,29 @@
-
+import { useWallet } from '@aptos-labs/wallet-adapter-react';
+import WalletConnect from '../components/WalletConnect';
 import Layout from '../components/layout/Layout';
 import UserStats from '../components/dashboard/UserStats';
 import PortfolioValue from '../components/dashboard/PortfolioValue';
 import StrategyCard, { Strategy } from '../components/dashboard/StrategyCard';
 
-const Dashboard = () => {
+export default function Dashboard() {
+  const { connected } = useWallet();
+
+  if (!connected) {
+    return (
+      <Layout>
+        <div className="flex items-center justify-center min-h-[calc(100vh-4rem)]">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold mb-4">Connect Your Wallet</h2>
+            <p className="text-gray-600 dark:text-gray-400 mb-6">
+              Please connect your wallet to view your dashboard
+            </p>
+            <WalletConnect />
+          </div>
+        </div>
+      </Layout>
+    );
+  }
+
   // Sample investment strategies data
   const strategies: Strategy[] = [
     {
@@ -53,6 +72,4 @@ const Dashboard = () => {
       </div>
     </Layout>
   );
-};
-
-export default Dashboard;
+}

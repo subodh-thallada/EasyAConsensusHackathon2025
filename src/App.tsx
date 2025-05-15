@@ -6,6 +6,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { AptosWalletAdapterProvider } from "@aptos-labs/wallet-adapter-react";
 import { Network } from "@aptos-labs/ts-sdk";
+import AuthWrapper from './components/layout/AuthWrapper';
 
 // Pages
 import Index from "./pages/Index";
@@ -17,23 +18,19 @@ import StrategyDetail from "./pages/StrategyDetail";
 import AssetManagerDashboard from "./pages/AssetManagerDashboard";
 import About from "./pages/About";
 import NotFound from "./pages/NotFound";
+import { addSeconds } from 'date-fns';
 
 const queryClient = new QueryClient();
 
-const App = () => {
+// Separate component to use wallet hook inside provider
+const AppContent = () => {
   return (
-    <AptosWalletAdapterProvider
-      autoConnect={true}
-      dappConfig={{ network: Network.TESTNET }}
-      onError={(error) => {
-        console.log("error", error);
-      }}
-    >
-      <QueryClientProvider client={queryClient}>
-        <TooltipProvider>
-          <Toaster />
-          <Sonner />
-          <BrowserRouter>
+    <QueryClientProvider client={queryClient}>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <BrowserRouter>
+          <AuthWrapper>
             <Routes>
               <Route path="/" element={<Index />} />
               <Route path="/login" element={<Login />} />
@@ -45,9 +42,23 @@ const App = () => {
               <Route path="/about" element={<About />} />
               <Route path="*" element={<NotFound />} />
             </Routes>
-          </BrowserRouter>
-        </TooltipProvider>
-      </QueryClientProvider>
+          </AuthWrapper>
+        </BrowserRouter>
+      </TooltipProvider>
+    </QueryClientProvider>
+  );
+};
+
+const App = () => {
+  return (
+    <AptosWalletAdapterProvider
+      autoConnect={true}
+      dappConfig={{ network: Network.TESTNET }}
+      onError={(error) => {
+        console.log("error", error);
+      }}
+    >
+      <AppContent />
     </AptosWalletAdapterProvider>
   );
 };
