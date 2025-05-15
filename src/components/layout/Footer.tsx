@@ -21,16 +21,7 @@ const Footer = () => {
                   About
                 </Link>
               </li>
-              <li>
-                <Link to="/login" className="text-sm text-muted-foreground hover:text-white">
-                  Login
-                </Link>
-              </li>
-              <li>
-                <Link to="/signup" className="text-sm text-muted-foreground hover:text-white">
-                  Sign Up
-                </Link>
-              </li>
+              
             </ul>
           </div>
           
