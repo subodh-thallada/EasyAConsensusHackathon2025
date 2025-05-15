@@ -9,28 +9,28 @@ const Hero = () => {
       <div className="max-w-7xl mx-auto">
         <div className="flex flex-col md:flex-row items-center justify-between gap-12">
           <div className="w-full md:w-1/2 space-y-6">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
-            <span className="block">Invest in Top Traders and Hedge Funds.</span>
-            <span className="bg-gradient-to-r from-aptos-primary to-aptos-accent bg-clip-text text-transparent">
-            Own Their Strategy. Earn With Their Success.
-            </span>
-          </h1>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold tracking-tight">
+              <span className="block">Invest in Tokenized Crypto Strategies.</span>
+              <span className="bg-gradient-to-r from-aptos-primary to-aptos-accent bg-clip-text text-transparent">
+                Back the Best. Earn When They Perform.
+              </span>
+            </h1>
             <p className="text-lg text-muted-foreground max-w-md">
-            Buy into tokenized strategies managed by expert traders and hedge funds. When they win, you win. 
-            No copying, just pure performance-based investing on the Aptos blockchain.
+              Own on-chain strategy tokens managed by proven traders and hedge funds. Transparent, performance-driven investing on the Aptos blockchain — no guesswork, no middlemen.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <Link to="/signup">
-              <Button size="lg" className="bg-aptos-primary hover:bg-aptos-secondary">
-                Start Investing <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
+                <Button size="lg" className="bg-aptos-primary hover:bg-aptos-secondary">
+                  Start Investing <ArrowRight className="ml-2 h-4 w-4" />
+                </Button>
               </Link>
               <Link to="/dashboard">
                 <Button variant="outline" size="lg">
-                Explore Investment Strategies
+                  Browse Strategy Tokens
                 </Button>
               </Link>
             </div>
+
 
 {/*  THE JOIN 5000+ USERS PART LOL*/}
             {/* <div className="pt-8 flex items-center space-x-4 text-sm text-muted-foreground">

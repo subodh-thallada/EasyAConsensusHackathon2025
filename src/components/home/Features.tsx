@@ -3,26 +3,26 @@ import { Shield, TrendingUp, BarChart, Wallet } from 'lucide-react';
 
 const features = [
   {
-    title: 'Easy Onboarding',
-    description: 'Connect your wallet and start copy trading within minutes. No complex setup required.',
+    title: 'Effortless Onboarding',
+    description: 'Connect your wallet and start investing in top crypto strategists in just a few clicks.',
     icon: Wallet,
     color: 'bg-blue-500/10 text-blue-500',
   },
   {
-    title: 'Yield-Targeted Risk Options',
-    description: 'Choose your risk level and get matched with traders that match your investment goals.',
+    title: 'Invest by Risk & Return',
+    description: 'Choose from curated strategy tokens — high growth, stable yield, or balanced portfolios.',
     icon: TrendingUp,
     color: 'bg-aptos-accent/10 text-aptos-accent',
   },
   {
-    title: 'Performance Analytics',
-    description: 'Track your portfolio performance with advanced analytics and real-time data.',
+    title: 'Transparent Performance Data',
+    description: 'Access detailed analytics, performance history, and risk scores before you invest.',
     icon: BarChart,
     color: 'bg-purple-500/10 text-purple-500',
   },
   {
-    title: 'Aptos-Backed Security',
-    description: 'Built on the secure and scalable Aptos blockchain for optimal performance and safety.',
+    title: 'Secured on Aptos',
+    description: 'Non-custodial and secure smart contracts built on the scalable Aptos blockchain.',
     icon: Shield,
     color: 'bg-aptos-primary/10 text-aptos-primary',
   },
@@ -34,11 +34,11 @@ const Features = () => {
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12 md:mb-20">
           <h2 className="text-3xl font-bold tracking-tight sm:text-4xl mb-4">
-            Trade smarter, not harder
+            Invest in Crypto Talent Like Never Before
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Our platform makes it simple to follow top performing traders on the Aptos blockchain
-            and automatically mirror their successful strategies.
+            Our platform lets you invest directly in traders and hedge funds through tokenized strategies.
+            If they succeed, so do you.
           </p>
         </div>
 

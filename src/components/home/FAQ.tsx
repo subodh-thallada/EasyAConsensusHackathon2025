@@ -8,29 +8,29 @@ import {
 
 const faqItems = [
   {
-    question: "How does copy trading work on AptosTradeFlow?",
+    question: "How does investing in personal coins work?",
     answer:
-      "Copy trading on AptosTradeFlow leverages the Aptos blockchain to automatically mirror the trades of your chosen asset managers. When you allocate a percentage of your portfolio to a trader, our smart contracts ensure their trades are replicated in your portfolio in real-time, proportional to your allocation.",
+      "Each trader or hedge fund on the platform issues their own token that represents their strategy. When you invest, you're buying into that strategy via their personal coin. As their performance grows, so does the value of your investment.",
   },
   {
     question: "What are the fees for using AptosTradeFlow?",
     answer:
-      "We charge a small 1% fee on profitable trades. There are no subscription fees or hidden charges. Asset managers may set their own success fees which are clearly displayed on their profiles before you choose to follow them.",
+      "We charge a small platform fee on successful returns. Traders and funds may also set performance fees tied to their coin's value growth — all transparently displayed before you invest.",
   },
   {
-    question: "How do I choose the right traders to follow?",
+    question: "How do I choose who to invest in?",
     answer:
-      "Our platform provides comprehensive data on each trader including their historical performance, risk rating, trading style, and portfolio composition. You can also filter traders based on your risk preference (low, medium, high) to find those that match your investment goals.",
+      "Each trader and fund has a public profile showcasing historical returns, strategy style, risk score, and token performance. You can browse, filter by volatility and return goals, and choose based on what aligns with your preferences.",
   },
   {
-    question: "Can I become an asset manager on the platform?",
+    question: "Can I launch my own strategy coin?",
     answer:
-      "Yes! Experienced traders can apply to become asset managers. You'll need to connect your wallet, demonstrate your trading history, and set your performance fee. Once approved, other users can allocate funds to copy your trading strategy.",
+      "Yes! If you're a skilled trader or fund manager, you can tokenize your strategy and offer it to the community. You'll need to verify your wallet and trading history to get started.",
   },
   {
-    question: "Is my investment safe on AptosTradeFlow?",
+    question: "Is my investment secure?",
     answer:
-      "AptosTradeFlow is built on the secure Aptos blockchain with non-custodial smart contracts. This means you always retain control of your funds. Our copy trading contracts are audited and designed to prevent asset managers from accessing your principal investment directly.",
+      "Yes. All funds are held in non-custodial smart contracts on the Aptos blockchain. Your tokens remain in your wallet, and no manager can access your principal directly. The contracts are audited for transparency and safety.",
   },
 ];
 
@@ -43,7 +43,7 @@ const FAQ = () => {
             Frequently asked questions
           </h2>
           <p className="text-lg text-muted-foreground">
-            Everything you need to know about AptosTradeFlow and copy trading.
+            Learn how to invest in top crypto talent through tokenized strategies on AptosTradeFlow.
           </p>
         </div>
 
