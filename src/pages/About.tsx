@@ -82,14 +82,6 @@ const About = () => {
             </p>
           </section>
 
-          <section className="text-center">
-            <h2 className="text-2xl font-bold mb-6">Ready to start copying top traders?</h2>
-            <Link to="/signup">
-              <Button size="lg" className="bg-aptos-primary hover:bg-aptos-secondary">
-                Get Started <ArrowRight className="ml-2 h-4 w-4" />
-              </Button>
-            </Link>
-          </section>
         </div>
       </div>
     </Layout>
