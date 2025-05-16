@@ -1,12 +1,7 @@
 ### Demo Video 
 
-<object width="425" height="350">
-  <param name="movie" value="https://youtu.be/1gpxLJ-83vE" />
-  <param name="wmode" value="transparent" />
-  <embed src="https://youtu.be/1gpxLJ-83vE"
-         type="application/x-shockwave-flash"
-         wmode="transparent" width="425" height="350" />
-</object>
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/1gpxLJ-83vE/0.jpg)](https://www.youtube.com/watch?v=1gpxLJ-83vE)
+
 
 ### Screenshots of UI
 ![image](https://github.com/user-attachments/assets/6a217c61-2dc1-4ca3-8bb8-b815a1916fd5)
