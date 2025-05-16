@@ -85,4 +85,4 @@ A standardized interface layer that ensures consistent blockchain interactions t
 - Facilitates easy addition of new blockchain interactions as your platform evolves
 
 ### Descriptive Video
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/hiVH38nnhJg/0.jpg)](https://www.youtube.com/watch?v=hiVH38nnhJg)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/hiVH38nnhJg/0.jpg)](https://www.youtube.com/watch?v=uojqCXrsC2s)
