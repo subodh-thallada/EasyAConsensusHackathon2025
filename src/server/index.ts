@@ -1,4 +1,4 @@
-import express, { Request, Response } from 'express';
+import express, { Request, Response, Router, RequestHandler } from 'express';
 import cors from 'cors';
 import { Aptos, AptosConfig, Network, Account } from "@aptos-labs/ts-sdk";
 
@@ -13,6 +13,8 @@ const aptos = new Aptos(config);
 app.use(cors());
 app.use(express.json());
 
+const router = Router();
+
 /**
  * 1. need the aiblrity to retrieve the balance of an account
  * 
@@ -25,7 +27,7 @@ app.use(express.json());
  */
 
 // Get wallet balance endpoint
-app.get('/api/balance/:accountAddress', async (req: Request, res: Response) => {
+router.get('/api/balance/:accountAddress', (async (req: Request, res: Response) => {
   try {
     const { accountAddress } = req.params;
     
@@ -45,10 +47,10 @@ app.get('/api/balance/:accountAddress', async (req: Request, res: Response) => {
       details: error instanceof Error ? error.message : 'Unknown error'
     });
   }
-});
+}) as RequestHandler);
 
 // Transfer APT endpoint
-app.post('/api/transfer', async (req: Request, res: Response) => {
+router.post('/api/transfer', (async (req: Request, res: Response) => {
   try {
     const { fromPrivateKey, toAddress, amount } = req.body;
 
@@ -66,20 +68,29 @@ app.post('/api/transfer', async (req: Request, res: Response) => {
     const sender = Account.fromPrivateKey({ privateKey: fromPrivateKey });
 
     // Submit transfer transaction
-    const transaction = await aptos.transferAptos({
-      sender: sender,
-      recipient: toAddress,
-      amount: BigInt(amountInOctas),
+    const transaction = await aptos.transaction.build.simple({
+      sender: sender.accountAddress,
+      data: {
+        function: "0x1::coin::transfer",
+        typeArguments: ["0x1::aptos_coin::AptosCoin"],
+        functionArguments: [toAddress, BigInt(amountInOctas)],
+      },
+    });
+
+    // Sign and submit the transaction
+    const signedTxn = await aptos.signAndSubmitTransaction({
+      signer: sender,
+      transaction,
     });
 
     // Wait for transaction to complete
     const result = await aptos.waitForTransaction({
-      transactionHash: transaction.hash,
+      transactionHash: signedTxn.hash,
     });
 
     res.json({
       success: true,
-      transactionHash: transaction.hash,
+      transactionHash: signedTxn.hash,
       status: result.success ? 'completed' : 'failed',
       amount: amount,
       to: toAddress,
@@ -93,10 +104,10 @@ app.post('/api/transfer', async (req: Request, res: Response) => {
       details: error instanceof Error ? error.message : 'Unknown error'
     });
   }
-});
+}) as RequestHandler);
 
 // Investment strategy purchase endpoint
-app.post('/api/investment/purchase', async (req: Request, res: Response) => {
+router.post('/api/investment/purchase', (async (req: Request, res: Response) => {
   try {
     const { 
       investorPrivateKey, 
@@ -122,15 +133,24 @@ app.post('/api/investment/purchase', async (req: Request, res: Response) => {
     const strategyAddress = "0x1234..."; // Replace with actual strategy contract address
 
     // Submit investment transaction
-    const transaction = await aptos.transferAptos({
-      sender: investor,
-      recipient: strategyAddress,
-      amount: BigInt(amountInOctas),
+    const transaction = await aptos.transaction.build.simple({
+      sender: investor.accountAddress,
+      data: {
+        function: "0x1::coin::transfer",
+        typeArguments: ["0x1::aptos_coin::AptosCoin"],
+        functionArguments: [strategyAddress, BigInt(amountInOctas)],
+      },
+    });
+
+    // Sign and submit the transaction
+    const signedTxn = await aptos.signAndSubmitTransaction({
+      signer: investor,
+      transaction,
     });
 
     // Wait for transaction to complete
     const result = await aptos.waitForTransaction({
-      transactionHash: transaction.hash,
+      transactionHash: signedTxn.hash,
     });
 
     // Record investment details
@@ -140,7 +160,7 @@ app.post('/api/investment/purchase', async (req: Request, res: Response) => {
       amount: amount,
       type: investmentType,
       timestamp: new Date(),
-      transactionHash: transaction.hash,
+      transactionHash: signedTxn.hash,
       status: result.success ? 'completed' : 'failed'
     };
 
@@ -148,7 +168,7 @@ app.post('/api/investment/purchase', async (req: Request, res: Response) => {
       success: true,
       investment,
       transactionDetails: {
-        hash: transaction.hash,
+        hash: signedTxn.hash,
         status: result.success ? 'completed' : 'failed'
       }
     });
@@ -160,10 +180,10 @@ app.post('/api/investment/purchase', async (req: Request, res: Response) => {
       details: error instanceof Error ? error.message : 'Unknown error'
     });
   }
-});
+}) as RequestHandler);
 
 // Investment strategy withdrawal endpoint
-app.post('/api/investment/withdraw', async (req: Request, res: Response) => {
+router.post('/api/investment/withdraw', (async (req: Request, res: Response) => {
   try {
     const { 
       investorPrivateKey, 
@@ -188,17 +208,24 @@ app.post('/api/investment/withdraw', async (req: Request, res: Response) => {
     const strategyAddress = "0x1234..."; // Replace with actual strategy contract address
 
     // Submit withdrawal transaction
-    // Note: In a real implementation, this would call a smart contract function
-    // that handles the withdrawal logic and verification
-    const transaction = await aptos.transferAptos({
-      sender: strategyAddress, // This would actually be handled by the smart contract
-      recipient: investor.accountAddress,
-      amount: BigInt(amountInOctas),
+    const transaction = await aptos.transaction.build.simple({
+      sender: strategyAddress,
+      data: {
+        function: "0x1::coin::transfer",
+        typeArguments: ["0x1::aptos_coin::AptosCoin"],
+        functionArguments: [investor.accountAddress, BigInt(amountInOctas)],
+      },
+    });
+
+    // Sign and submit the transaction
+    const signedTxn = await aptos.signAndSubmitTransaction({
+      signer: investor,
+      transaction,
     });
 
     // Wait for transaction to complete
     const result = await aptos.waitForTransaction({
-      transactionHash: transaction.hash,
+      transactionHash: signedTxn.hash,
     });
 
     // Record withdrawal details
@@ -208,7 +235,7 @@ app.post('/api/investment/withdraw', async (req: Request, res: Response) => {
       amount: amount,
       type: 'withdraw',
       timestamp: new Date(),
-      transactionHash: transaction.hash,
+      transactionHash: signedTxn.hash,
       status: result.success ? 'completed' : 'failed'
     };
 
@@ -216,7 +243,7 @@ app.post('/api/investment/withdraw', async (req: Request, res: Response) => {
       success: true,
       withdrawal,
       transactionDetails: {
-        hash: transaction.hash,
+        hash: signedTxn.hash,
         status: result.success ? 'completed' : 'failed'
       }
     });
@@ -228,12 +255,14 @@ app.post('/api/investment/withdraw', async (req: Request, res: Response) => {
       details: error instanceof Error ? error.message : 'Unknown error'
     });
   }
-});
+}) as RequestHandler);
 
 // Sample route
-app.get('/api/hello', (req: Request, res: Response) => {
+router.get('/api/hello', ((req: Request, res: Response) => {
   res.json({ message: 'Hello from Express + TypeScript!' });
-});
+}) as RequestHandler);
+
+app.use(router);
 
 // Start server
 app.listen(PORT, () => {
