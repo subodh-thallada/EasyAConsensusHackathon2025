@@ -51,7 +51,7 @@ export default function InvestmentMenu({ strategy, onInvestmentComplete }: Inves
       setError(null);
   
       const amountInOctas = aptToOctas(Number(amount));
-      const recipientAddress = "0x6dcd637d903492fc53a9529aa92a0a740c52bd256a75eac9c09480860cf80da5"; // Replace with the actual wallet address
+      const recipientAddress = "0x4a0a5f4feaea0b8f767b581e8bf9294e8da3644b61d012a639b8fc32c0ffc5ee"; // Replace with the actual wallet address
   
       const transaction = {
         data: {
