@@ -1,3 +1,4 @@
+import confetti from 'canvas-confetti'; // at the top
 import { useState } from 'react';
 import { useWallet } from '@aptos-labs/wallet-adapter-react';
 import {
@@ -68,6 +69,13 @@ export default function InvestmentMenu({ strategy, onInvestmentComplete }: Inves
       const success = await checkTransaction(pendingTransaction.hash);
   
       if (success) {
+
+        confetti({
+          particleCount: 150,
+          spread: 70,
+          origin: { y: 0.6 }
+        });
+
         toast({
           title: "Transaction Successful",
           description: `Successfully sent ${amount} APT to ${recipientAddress}`,
