@@ -1,5 +1,12 @@
 ### Demo Video 
-https://youtu.be/1gpxLJ-83vE
+
+<object width="425" height="350">
+  <param name="movie" value="https://youtu.be/1gpxLJ-83vE" />
+  <param name="wmode" value="transparent" />
+  <embed src="https://youtu.be/1gpxLJ-83vE"
+         type="application/x-shockwave-flash"
+         wmode="transparent" width="425" height="350" />
+</object>
 
 ### Screenshots of UI
 ![image](https://github.com/user-attachments/assets/6a217c61-2dc1-4ca3-8bb8-b815a1916fd5)
