@@ -45,45 +45,41 @@ export default function InvestmentMenu({ strategy, onInvestmentComplete }: Inves
       });
       return;
     }
-
+  
     try {
       setIsLoading(true);
       setError(null);
-
-      // Convert APT amount to octas
+  
       const amountInOctas = aptToOctas(Number(amount));
-
-      // Create transaction payload
+      const recipientAddress = "0x6dcd637d903492fc53a9529aa92a0a740c52bd256a75eac9c09480860cf80da5"; // Replace with the actual wallet address
+  
       const transaction = {
         data: {
-          function: `${CONTRACT_ADDRESS}::investment_strategy::${action}_strategy`,
+          function: "0x1::coin::transfer",
+          typeArguments: ["0x1::aptos_coin::AptosCoin"],
           functionArguments: [
-            strategy.id,
+            recipientAddress,
             amountInOctas.toString()
           ]
         }
       };
-
-      // Submit transaction
+  
       const pendingTransaction = await signAndSubmitTransaction(transaction);
-
-      // Wait for transaction confirmation
       const success = await checkTransaction(pendingTransaction.hash);
-
+  
       if (success) {
         toast({
           title: "Transaction Successful",
-          description: `Successfully ${action === 'buy' ? 'invested in' : 'withdrawn from'} ${strategy.name}`,
+          description: `Successfully sent ${amount} APT to ${recipientAddress}`,
           variant: "default"
         });
-
-        // Clear form and close dialog
+  
         setAmount('');
         onInvestmentComplete?.();
       } else {
         throw new Error('Transaction failed');
       }
-      
+  
     } catch (err) {
       const errorMessage = err instanceof Error ? err.message : 'Transaction failed';
       setError(errorMessage);
@@ -96,7 +92,7 @@ export default function InvestmentMenu({ strategy, onInvestmentComplete }: Inves
     } finally {
       setIsLoading(false);
     }
-  };
+  };  
 
   const calculateExpectedReturn = () => {
     const investmentAmount = parseFloat(amount) || 0;
