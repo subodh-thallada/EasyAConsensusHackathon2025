@@ -22,7 +22,7 @@ const Hero = () => {
 
         {/* Subheading */}
         <p className="mt-6 text-lg sm:text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
-          Experience the future of decentralized trading with our advanced copy trading platform
+          Experience the future of crypto investing with real traders, diversified strategies, and blockchain-backed transparency
         </p>
 
         {/* CTA Buttons */}
