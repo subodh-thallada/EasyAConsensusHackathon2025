@@ -9,7 +9,7 @@ https://youtu.be/1gpxLJ-83vE
 
 ### Description of interaction with relevant blockchain 
 
-**🔄 Smart Contract: **`message_board_addr::message_board`
+# 🔄 Smart Contract: `message_board_addr::message_board`
 
 **Purpose:**
 An on-chain messaging system that provides verifiable communication between fund managers and investors.
@@ -34,7 +34,7 @@ An on-chain messaging system that provides verifiable communication between fund
 
 ---
 
-**💼 Development Tool: **`Account Generation Script`
+# 💼 Development Tool: `Account Generation Script`
 
 **Purpose:**
 A testing framework that simulates user interactions for wallet creation and fund transfers during development.
@@ -59,7 +59,7 @@ A testing framework that simulates user interactions for wallet creation and fun
 
 ---
 
-**🔌 Integration Framework: **`Aptos Client Utility Module`
+# 🔌 Integration Framework: `Aptos Client Utility Module`
 
 **Purpose:**
 A standardized interface layer that ensures consistent blockchain interactions throughout your application.
