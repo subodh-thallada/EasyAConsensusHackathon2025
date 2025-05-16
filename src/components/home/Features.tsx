@@ -21,8 +21,8 @@ const features: Feature[] = [
   },
   {
     icon: <Copy className="w-6 h-6" />,
-    title: "Copy Trading",
-    description: "Automatically replicate successful traders' strategies with customizable risk settings."
+    title: "Diversified Strategies",
+    description: "Access a range of professionally managed crypto strategies tailored to different risk and return profiles."
   },
   {
     icon: <LineChart className="w-6 h-6" />,
@@ -36,8 +36,8 @@ const features: Feature[] = [
   },
   {
     icon: <Lock className="w-6 h-6" />,
-    title: "Asset Security",
-    description: "Your assets remain in your control with our non-custodial trading system."
+    title: "Authenticated and Regulation Compliant",
+    description: "Trade with confidence on a platform built for compliance and authenticated user protection."
   },
   {
     icon: <Users className="w-6 h-6" />,
