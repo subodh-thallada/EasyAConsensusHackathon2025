@@ -35,6 +35,7 @@ export default function InvestmentMenu({ strategy, onInvestmentComplete }: Inves
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const { toast } = useToast();
+  const [timePeriod, setTimePeriod] = useState('1');
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -149,6 +150,19 @@ export default function InvestmentMenu({ strategy, onInvestmentComplete }: Inves
               placeholder="0.00"
               step="0.01"
               min="0"
+              required
+            />
+          </div>
+
+          <div className="space-y-2">
+            <Label>Investment Period (Months)</Label>
+            <Input
+              type="number"
+              value={timePeriod}
+              onChange={(e) => setTimePeriod(e.target.value)}
+              placeholder="Enter number of months"
+              min="1"
+              max="60"
               required
             />
           </div>
